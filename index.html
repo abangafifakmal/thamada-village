@@ -39,7 +39,7 @@
 <link rel="preload" as="image" href="photo-boat-noodle-phisek.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75,700;75,800;100,500;100,700&family=Sacramento&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Albert+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75,700;75,800;100,500;100,700&family=Sacramento&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Albert+Sans:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Ms+Madi&display=swap">
 <script type="application/ld+json">
 [
   {
@@ -408,9 +408,18 @@
   .careers{background:var(--ink);color:#fff;padding:clamp(44px,6vw,72px) 0}
   .careers .wrap{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
   @media (max-width:760px){.careers .wrap{grid-template-columns:1fr}}
-  .careers .eyebrow{color:#fff}.careers .eyebrow::before,.careers .eyebrow::after{background:var(--teal)}
-  .careers h2{font-size:clamp(2rem,3.6vw,3rem);margin-top:12px;color:#fff}
-  .careers p{color:rgba(255,255,255,.72);margin-top:10px;max-width:52ch}
+  .careers{font-family:'Montserrat',var(--body)}
+  .careers .jk{font-family:'Montserrat',var(--body);text-transform:uppercase;letter-spacing:.14em;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.05;color:#fff;display:flex;flex-wrap:wrap;gap:0 .45em}
+  .careers .jk .light{font-weight:300}
+  .careers .jk .bold{font-weight:600}
+  .careers h2{font-family:'Montserrat',var(--body);font-stretch:100%;text-transform:none;letter-spacing:0;font-weight:600;font-size:clamp(1.35rem,2.6vw,2rem);line-height:1.2;margin-top:14px;color:#fff}
+  .careers h2 span{color:var(--teal);font-weight:500}
+  .careers p{font-family:'Montserrat',var(--body);font-weight:400;color:rgba(255,255,255,.72);margin-top:10px;max-width:52ch;font-size:.95rem}
+  .careers .apply{display:grid;justify-items:center;gap:8px;text-align:center}
+  .careers .mohon{font-family:'Ms Madi','Sacramento',cursive;font-size:clamp(2.8rem,5.5vw,4.4rem);line-height:1;color:var(--teal);transform:rotate(-4deg);text-transform:none;letter-spacing:0;font-weight:400}
+  .careers .apply .btn{font-family:'Montserrat',var(--body);font-weight:600}
+  .careers .apply small{font-family:'Montserrat',var(--body);font-size:.72rem;color:rgba(255,255,255,.55);letter-spacing:.08em}
+  @media (max-width:760px){.careers .apply{justify-items:start;text-align:left}}
 
   /* footer */
   footer{padding:clamp(48px,6vw,80px) 0 40px;color:var(--ink-70);font-size:.88rem;background:var(--cream)}
@@ -1060,11 +1069,15 @@
 <section id="careers" class="careers">
   <div class="wrap">
     <div>
-      <span class="eyebrow left">Join the crew</span>
-      <h2>Service crew &amp; kitchen crew, both kedai.</h2>
-      <p>Full-time and part-time. Send a short resume, or just a message with your name and which kedai is nearer to you.</p>
+      <p class="jk" aria-label="Jawatan kosong"><span class="light">Jawatan</span><span class="bold">Kosong</span></p>
+      <h2>Service Crew <span>&amp;</span> Kitchen Crew</h2>
+      <p>Full-time dan part-time, kedua-dua cawangan: Gelang Patah dan Larkin. Hantar resume ringkas, atau mesej nama anda dan cawangan yang paling dekat.</p>
     </div>
-    <a class="btn wa" href="https://wa.me/601154400311?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20apply%20kerja%20di%20Thamada%2FTeh%20O%20Ice." target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>WhatsApp your resume</a>
+    <div class="apply">
+      <span class="mohon">Mohon sekarang!</span>
+      <a class="btn wa" href="https://wa.me/601154400311?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20apply%20kerja%20di%20Thamada%2FTeh%20O%20Ice." target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>WhatsApp resume</a>
+      <small>011-5440 0311</small>
+    </div>
   </div>
 </section>
 
