@@ -27,6 +27,7 @@ Single-file static site. No build step, no framework.
 - Prices / menu items: search for `<div class="item">` in `index.html`. One line per item: name, code, tags, price, optional description.
 - Hours: the branch cards (`#gelang-patah`, `#larkin`), the footer, the FAQ, and the JSON-LD block in `<head>`. The open/closed pill logic is in the `<script>` at the bottom (`BR` object: closing times; Tuesday closure).
 - Photos: replace the file with the same name, same square/4:3 crop, ≤ 1600px wide, JPEG quality ~85.
+- Company details: two entities. Gelang Patah = Teh O Ice & Boat Noodle Sdn Bhd, SSM 201801006811 (1268825-U); Larkin = Thamada Village Restaurant, SSM 202203205668 (AS0452224-V). They appear in the footer (small print + copyright line) and in the JSON-LD (`parentOrganization`, `legalName`). SST registration numbers are on file with the owner and not shown on the site.
 - Phone numbers and links: search for the number; each appears in the branch card, footer, FAQ and WhatsApp chooser. Every WhatsApp link carries a prefilled `?text=`. General/reserve buttons use the owner's template ("Hi, saya click dari website thamadavillage.com. Nak reserve meja :" then a blank line, then "Nama : / Tarikh : / Masa : / Bilangan Pax :" one per line; line breaks as `%0A`, the blank line is `%0A%0A`); pickup, careers and feedback keep their own first line. Keep the "click dari website" line so the kedai knows the chat came from the website.
 - After a change to the menu or hours, bump `<lastmod>` in `sitemap.xml`.
 
