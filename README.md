@@ -21,6 +21,7 @@ Single-file static site. No build step, no framework.
 
 ## Editing
 
+- The table (v6): `#table` is a pinned scroll scene (`.tscene` height sets scroll length, `.tpin` is sticky). Rows in the ticket carry `data-price`; the total is computed from them. Body uses `overflow-x:clip` on purpose — `overflow-x:hidden` on body breaks `position:sticky` for the nav and this scene.
 - Motion (v5): hero showcase cards are the `<figure class="show-card">` list in the hero; add/remove a figure and the dots update automatically. Photo marquee = `<div class="marq">`, keep both copies of the list identical. Text band = `<div class="band">`. Scroll reveal = `data-rv` attribute. Everything respects `prefers-reduced-motion`.
 
 - Prices / menu items: search for `<div class="item">` in `index.html`. One line per item: name, code, tags, price, optional description.

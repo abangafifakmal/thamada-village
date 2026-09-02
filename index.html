@@ -162,7 +162,7 @@
   }
   *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{overflow-x:clip;margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
   a{color:inherit;text-decoration:none}
   a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
@@ -318,15 +318,57 @@
   .menu-note .legend{display:inline-flex;gap:.5rem;align-items:center}
 
   /* the table (photo feature) */
-  .table-sec .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
-  @media (max-width:900px){.table-sec .wrap{grid-template-columns:1fr}}
-  .table-sec img{width:100%;border-radius:var(--r);box-shadow:0 30px 60px -30px rgba(18,18,16,.45)}
-  .table-list{display:grid;gap:0;margin-top:26px;border-top:2px solid var(--ink)}
-  .table-list .row{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
-  .table-list .n{font-family:var(--serif);font-weight:700;color:var(--terra);font-size:1.1rem;width:1.4em}
-  .table-list .d{font-weight:600}
-  .table-list .d small{display:block;font-weight:400;color:var(--muted);font-size:.84rem}
-  .table-list .p{font-family:var(--serif);font-weight:700;color:var(--ink);white-space:nowrap}
+  /* the table (v6): pinned scroll scene. CSS defaults = finished state, so no-JS / reduced-motion / screenshots show the full table. */
+  .table-sec{padding:0}
+  .tscene{position:relative;height:260vh}
+  .tpin{position:sticky;top:0;height:100vh;height:100svh;display:grid;align-items:center;padding-top:72px;padding-bottom:16px;overflow:hidden}
+  .tgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(24px,4vw,64px);align-items:center;width:100%}
+  .tcopy h2{font-size:clamp(2rem,4vw,3.4rem);margin-top:14px}
+  .tcopy h2 .script{color:var(--teal);font-size:1.15em}
+  .ticket{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px 12px;box-shadow:0 24px 50px -30px rgba(18,18,16,.35);max-width:460px;position:relative;overflow:hidden;margin-top:20px}
+  .ticket::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:repeating-linear-gradient(90deg,var(--teal) 0 14px,var(--terra) 14px 28px,var(--gold) 28px 42px)}
+  .ticket header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:8px;margin-bottom:4px}
+  .ticket header b{font-family:var(--display);font-stretch:75%;font-weight:800;text-transform:uppercase;font-size:1.1rem}
+  .ticket header small{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .trow{display:grid;grid-template-columns:34px 44px 1fr auto;gap:10px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);will-change:transform,opacity}
+  .trow img{width:34px;height:34px;border-radius:7px;object-fit:cover}
+  .trow .code{font-size:.6rem;font-weight:800;letter-spacing:.08em;color:var(--muted);background:var(--cream-2);padding:.16rem .3rem;border-radius:3px;text-align:center}
+  .trow .name{font-weight:600;font-size:.88rem;line-height:1.25}
+  .trow .name small{display:block;font-weight:400;color:var(--muted);font-size:.74rem}
+  .trow .price{font-family:var(--serif);font-weight:700;color:var(--terra);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .ttotal{display:flex;justify-content:space-between;align-items:baseline;padding-top:10px}
+  .ttotal small{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .ttotal b{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:1.8rem;font-variant-numeric:tabular-nums}
+  .ttotal b em{font-style:normal;font-size:.6em;color:var(--muted);margin-right:.2em}
+  .tnote{font-size:.66rem;color:var(--muted);margin-top:2px}
+  .tacts{margin-top:18px;display:flex;gap:.6rem;flex-wrap:wrap}
+  .tvisual{position:relative;width:min(100%,520px);aspect-ratio:1;margin:0 auto}
+  .tring{position:absolute;inset:0;transform:rotate(-90deg)}
+  .tring circle{fill:none;stroke-width:2.5}
+  .tring .bg{stroke:var(--line)}
+  .tring .fg{stroke:var(--terra);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+  .tround{position:absolute;inset:6%;border-radius:50%;overflow:hidden;background:var(--cream-2);box-shadow:0 40px 70px -30px rgba(18,18,16,.45),inset 0 0 0 8px var(--white)}
+  .tround img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
+  .tround .dim{filter:grayscale(1) brightness(.72) contrast(.9);opacity:.55}
+  .tround .lit{will-change:clip-path}
+  .tfly{position:absolute;width:15%;aspect-ratio:1;border-radius:50%;object-fit:cover;border:3px solid var(--white);box-shadow:0 10px 24px rgba(18,18,16,.3);left:var(--x);top:var(--y);margin:-7.5% 0 0 -7.5%;will-change:transform,opacity}
+  .tbar{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--line)}
+  .tbar i{display:block;height:100%;width:100%;background:var(--terra)}
+  @media (max-width:900px){
+    .tscene{height:220vh}
+    .tpin{padding-top:64px;align-items:start}
+    .tgrid{grid-template-columns:1fr;gap:10px}
+    .tvisual{width:min(52vw,260px);order:-1}
+    .tcopy h2{font-size:clamp(1.6rem,6.5vw,2.2rem);margin-top:8px}
+    .ticket{margin-top:12px;padding:12px 12px 8px;max-width:none}
+    .trow{padding:4px 0;grid-template-columns:28px 40px 1fr auto}
+    .trow img{width:28px;height:28px}
+    .trow .name{font-size:.8rem}.trow .name small{display:none}
+    .ttotal b{font-size:1.4rem}
+    .tacts{margin-top:12px}
+  }
+  @media (max-height:700px) and (max-width:900px){.tcopy .eyebrow{display:none}.tnote{display:none}}
+  @media (prefers-reduced-motion:reduce){.tscene{height:auto}.tpin{position:relative;height:auto;padding:clamp(40px,6vw,80px) 0}}
 
   /* 50 sen band */
   .fifty{background:var(--terra);color:#fff;position:relative;overflow:hidden}
@@ -888,24 +930,43 @@
 
 <!-- THE TABLE -->
 <section id="table" class="table-sec">
-  <div class="wrap">
-    <div>
-      <img data-px="-.08" src="dv-table-spread.jpg" alt="A full table at Thamada: boat noodle in teal bowls, nasi kerabu, khao kluk kapi, spring rolls, mango sticky rice" width="1800" height="1195">
-    </div>
-    <div>
-      <span class="eyebrow left">One table, five people</span>
-      <h2 style="margin-top:14px;font-size:clamp(2.4rem,4.6vw,3.8rem)">What a table <span class="script" style="color:var(--teal);font-size:1.15em">actually looks like.</span></h2>
-      <div class="table-list" data-rv>
-        <div class="row"><span class="n">1</span><span class="d">Boat Noodle Beef, two bowls each<small>The small bowls. Nobody stops at one.</small></span><span class="p">RM3.90</span></div>
-        <div class="row"><span class="n">2</span><span class="d">Nasi Kerabu Fried Chicken<small>Blue rice, ulam, budu, the whole plate</small></span><span class="p">RM15.90</span></div>
-        <div class="row"><span class="n">3</span><span class="d">Khao Kluk Kapi<small>Shrimp-paste fried rice, omelette, green mango</small></span><span class="p">RM22.50</span></div>
-        <div class="row"><span class="n">4</span><span class="d">Chicken Tomyum Soup<small>Sour, hot, red. Share it.</small></span><span class="p">RM19.90</span></div>
-        <div class="row"><span class="n">5</span><span class="d">Mango Sticky Rice<small>When mango is in season</small></span><span class="p">RM15.90</span></div>
+  <div class="tscene" data-tscene>
+    <div class="tpin">
+      <div class="wrap tgrid">
+        <div class="tcopy">
+          <span class="eyebrow left">One table, two people</span>
+          <h2>What a table <span class="script">actually looks like.</span></h2>
+          <div class="ticket" data-ticket>
+            <header><b>Order ticket</b><small>Larkin · Table 7</small></header>
+        <div class="trow" data-price="15.60"><img src="dv-hero-boat-noodle.jpg" alt="" loading="lazy" width="120" height="120"><span class="code">N02</span><span class="name">Boat Noodle Beef<small>Small bowl × 4 · two each</small></span><span class="price">RM15.60</span></div>
+        <div class="trow" data-price="15.90"><img src="dv-plate-nasi-kerabu.jpg" alt="" loading="lazy" width="120" height="120"><span class="code">RK02</span><span class="name">Nasi Kerabu Fried Chicken<small>Blue rice, ulam, budu</small></span><span class="price">RM15.90</span></div>
+        <div class="trow" data-price="22.50"><img src="dv-m15.jpg" alt="" loading="lazy" width="120" height="120"><span class="code">SP09</span><span class="name">Khao Kluk Kapi<small>Shrimp-paste fried rice, to share</small></span><span class="price">RM22.50</span></div>
+        <div class="trow" data-price="19.90"><img src="dv-m11.jpg" alt="" loading="lazy" width="120" height="120"><span class="code">AC07</span><span class="name">Chicken Tomyum Soup<small>Sour, hot, red. Share it.</small></span><span class="price">RM19.90</span></div>
+        <div class="trow" data-price="15.90"><img src="dv-m25.jpg" alt="" loading="lazy" width="120" height="120"><span class="code">D1</span><span class="name">Mango Sticky Rice<small>When mango is in season</small></span><span class="price">RM15.90</span></div>
+        <div class="trow" data-price="1.00"><img src="dv-m31.jpg" alt="" loading="lazy" width="120" height="120"><span class="code">CB01</span><span class="name">Teh O Ice × 2<small>Still 50 sen</small></span><span class="price">RM1.00</span></div>
+            <div class="ttotal"><small><span data-tcount>6</span> items · before SST</small><b><em>RM</em><span data-ttotal>90.80</span></b></div>
+            <div class="tnote">2025 menu prices. Service charge 10% and SST 6% added at the counter.</div>
+          </div>
+          <div class="tacts">
+            <a class="btn dark" href="#order"><svg><use href="#i-chat"/></svg>Reserve a table</a>
+            <a class="btn ghost" href="#menu">Full menu</a>
+          </div>
+        </div>
+        <div class="tvisual" data-tvisual>
+          <svg class="tring" viewBox="0 0 100 100" aria-hidden="true"><circle class="bg" cx="50" cy="50" r="48.5" pathLength="1"/><circle class="fg" cx="50" cy="50" r="48.5" pathLength="1"/></svg>
+          <div class="tround">
+            <img class="dim" src="dv-table-spread.jpg" alt="" width="1800" height="1200" loading="lazy">
+            <img class="lit" src="dv-table-spread.jpg" alt="A full table at Thamada: boat noodle in teal bowls, nasi kerabu, khao kluk kapi, spring rolls, mango sticky rice" width="1800" height="1200" loading="lazy">
+          </div>
+      <img class="tfly" src="dv-hero-boat-noodle.jpg" alt="Boat Noodle Beef" loading="lazy" width="200" height="200">
+      <img class="tfly" src="dv-plate-nasi-kerabu.jpg" alt="Nasi Kerabu Fried Chicken" loading="lazy" width="200" height="200">
+      <img class="tfly" src="dv-m15.jpg" alt="Khao Kluk Kapi" loading="lazy" width="200" height="200">
+      <img class="tfly" src="dv-m11.jpg" alt="Chicken Tomyum Soup" loading="lazy" width="200" height="200">
+      <img class="tfly" src="dv-m25.jpg" alt="Mango Sticky Rice" loading="lazy" width="200" height="200">
+      <img class="tfly" src="dv-m31.jpg" alt="Teh O Ice × 2" loading="lazy" width="200" height="200">
+        </div>
       </div>
-      <div style="margin-top:22px;display:flex;gap:.6rem;flex-wrap:wrap">
-        <a class="btn dark" href="#order"><svg><use href="#i-chat"/></svg>Reserve a table</a>
-        <a class="btn ghost" href="#menu">Full menu</a>
-      </div>
+      <div class="tbar" aria-hidden="true"><i data-tbar></i></div>
     </div>
   </div>
 </section>
@@ -1308,6 +1369,39 @@
     function par(){ticking=false;var vh=innerHeight;px.forEach(function(el){var r=el.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var c=(r.top+r.height/2-vh/2)/vh;el.style.transform='translate3d(0,'+(c*parseFloat(el.getAttribute('data-px'))*100).toFixed(2)+'px,0)'})}
     window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(par)}},{passive:true});par();
   }
+})();
+</script>
+
+<script>
+/* v6: 'The table' scroll scene. Progress 0→1 through the pinned block drives the ticket rows, the flying plates, the colour fill and the total. */
+(function(){
+  var sc=document.querySelector('[data-tscene]'); if(!sc) return;
+  var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var rows=[].slice.call(sc.querySelectorAll('.trow')),flies=[].slice.call(sc.querySelectorAll('.tfly')),lit=sc.querySelector('.tround .lit'),ring=sc.querySelector('.tring .fg'),tot=sc.querySelector('[data-ttotal]'),cnt=sc.querySelector('[data-tcount]'),bar=sc.querySelector('[data-tbar]');
+  var POS=[[50,24],[73,37],[73,63],[50,76],[27,63],[27,37]];
+  flies.forEach(function(f,k){var q=POS[k%POS.length];f.style.setProperty('--x',q[0]+'%');f.style.setProperty('--y',q[1]+'%')});
+  var clamp=function(v,a,b){return Math.max(a,Math.min(b,v))},eo=function(t){return 1-Math.pow(1-t,3)},eio=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2},win=function(p,a,w){return clamp((p-a)/w,0,1)};
+  function paint(p){
+    var sum=0,c=0;
+    rows.forEach(function(r,k){
+      var lp=eo(win(p,0.04+k*0.13,0.2));
+      r.style.opacity=lp; r.style.transform='translate('+((1-lp)*-40).toFixed(2)+'%,'+((1-lp)*6).toFixed(1)+'px) rotate('+((1-lp)*-4).toFixed(2)+'deg)';
+      sum+=parseFloat(r.getAttribute('data-price'))*lp; if(lp>0.5)c++;
+      var f=flies[k]; if(f){var fp=eio(win(p,0.10+k*0.13,0.26));f.style.opacity=clamp(fp/0.3,0,1);var sx=-150-k*20,sy=(k-2.5)*30;f.style.transform='translate('+(sx*(1-fp)).toFixed(1)+'%,'+(sy*(1-fp)).toFixed(1)+'%) scale('+(0.4+0.6*fp).toFixed(3)+') rotate('+((1-fp)*-30).toFixed(1)+'deg)'}
+    });
+    tot.textContent=sum.toFixed(2); cnt.textContent=c;
+    var fill=eio(win(p,0.04,0.86));
+    lit.style.clipPath='circle('+(fill*75).toFixed(2)+'% at 50% 50%)';
+    ring.style.strokeDashoffset=(1-fill).toFixed(4);
+    if(bar)bar.style.width=(p*100).toFixed(1)+'%';
+  }
+  if(RM){return}
+  var ticking=false;
+  function prog(){var r=sc.getBoundingClientRect(),vh=innerHeight;return clamp(-r.top/(r.height-vh),0,1)}
+  function frame(){ticking=false;paint(prog())}
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+  addEventListener('resize',frame);
+  frame();
 })();
 </script>
 
