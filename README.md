@@ -7,6 +7,7 @@ Single-file static site. No build step, no framework.
 - `index.html` — the whole site (HTML + CSS + JS inline)
 - `og.png` — social share image (WhatsApp / Facebook preview, 1200×630)
 - `photo-*.jpg`, `logo-*.png` — photos from the kedai's own menu shoot and Instagram
+- `dv-*.jpg` — web-size crops of the owner's professional menu photos (Google Drive folder "2. Links (Photo)" from the menu designer). `dv-hero-*` = hero showcase 4:3, `dv-plate-*` = signature tiles 1:1, `dv-mNN` = marquee squares, `dv-table-spread` = the table section.
 - `CNAME` — custom domain for GitHub Pages (do not delete)
 - `sitemap.xml`, `robots.txt` — for Google Search Console
 
@@ -19,6 +20,8 @@ Single-file static site. No build step, no framework.
 - Hosting: this repo, branch `main`, root. Settings → Pages → Enforce HTTPS is on.
 
 ## Editing
+
+- Motion (v5): hero showcase cards are the `<figure class="show-card">` list in the hero; add/remove a figure and the dots update automatically. Photo marquee = `<div class="marq">`, keep both copies of the list identical. Text band = `<div class="band">`. Scroll reveal = `data-rv` attribute. Everything respects `prefers-reduced-motion`.
 
 - Prices / menu items: search for `<div class="item">` in `index.html`. One line per item: name, code, tags, price, optional description.
 - Hours: the branch cards (`#gelang-patah`, `#larkin`), the footer, the FAQ, and the JSON-LD block in `<head>`. The open/closed pill logic is in the `<script>` at the bottom (`BR` object: closing times; Tuesday closure).

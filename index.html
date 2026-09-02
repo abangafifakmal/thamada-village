@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <!-- Google tag (gtag.js) · Google Analytics 4 property "thamadavillage.com". Custom click events (WhatsApp, Waze, call, delivery) are sent from the tracking script at the end of the page. -->
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js")</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T83KV31HD5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -52,7 +53,7 @@
     "servesCuisine": ["Thai", "Southern Thai", "Malaysian"],
     "priceRange": "RM20–40",
     "telephone": "+60-7-596-4141",
-    "address": {"@type": "PostalAddress", "streetAddress": "No 58, Jalan Nusaria 11/4, Taman Nusantara", "addressLocality": "Gelang Patah", "addressRegion": "Johor", "postalCode": "81550", "addressCountry": "MY"},
+    "address": {"@type": "PostalAddress", "streetAddress": "58-01, Jalan Nusaria 11/4, Taman Nusantara", "addressLocality": "Gelang Patah", "addressRegion": "Johor", "postalCode": "81550", "addressCountry": "MY"},
     "geo": {"@type": "GeoCoordinates", "latitude": 1.4585279, "longitude": 103.5841039},
     "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "11:30", "closes": "21:00"}],
     "acceptsReservations": "True",
@@ -61,7 +62,8 @@
     "keywords": "halal Thai restaurant Johor Bahru, boat noodle, nasi kerabu, tomyam, restoran Thai halal JB",
     "hasMenu": "https://thamadavillage.com/#menu",
     "sameAs": ["https://www.instagram.com/tehoice_and_boatnoodle/", "https://www.facebook.com/Tehoice50centandBoatnoodle/", "https://www.tiktok.com/@tehoice50cent_boatnoodle", "https://linktr.ee/tehoice50centandboatnoodle"],
-    "parentOrganization": {"@type": "Organization", "name": "Teh O Ice & Boat Noodle Sdn Bhd"}
+    "email": "admin@nffoodandbeverage.com",
+    "parentOrganization": {"@type": "Organization", "name": "NF Food and Beverage Sdn Bhd"}
   },
   {
     "@context": "https://schema.org",
@@ -74,6 +76,7 @@
     "servesCuisine": ["Thai", "Southern Thai", "Malaysian"],
     "priceRange": "RM20–40",
     "telephone": "+60-7-221-0162",
+    "email": "thamadavillagelarkin@gmail.com",
     "address": {"@type": "PostalAddress", "streetAddress": "No 1, Jalan Geroda 2/1, Larkin", "addressLocality": "Johor Bahru", "addressRegion": "Johor", "postalCode": "80350", "addressCountry": "MY"},
     "geo": {"@type": "GeoCoordinates", "latitude": 1.4943258, "longitude": 103.7413919},
     "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "11:30", "closes": "22:00"}],
@@ -89,7 +92,7 @@
     "@type": "Organization",
     "@id": "https://thamadavillage.com/#org",
     "name": "Thamada Village × Teh O Ice 50 Cent & Boat Noodle",
-    "legalName": "Teh O Ice & Boat Noodle Sdn Bhd",
+    "legalName": "NF Food and Beverage Sdn Bhd",
     "url": "https://thamadavillage.com/",
     "logo": "https://thamadavillage.com/logo-thamada.png",
     "email": "hello@thamadavillage.com",
@@ -210,7 +213,9 @@
   .brand img{height:34px;width:auto}
   .brand .x{font-family:var(--display);font-weight:700;color:var(--muted);font-size:.8rem}
   .brand img.teh{height:28px}
-  .nav-links{display:flex;gap:1.8rem;font-size:.86rem;font-weight:600;color:var(--ink-70)}
+  .nav-links{display:flex;gap:1.5rem;font-size:.86rem;font-weight:600;color:var(--ink-70)}
+  .nav-links a{white-space:nowrap}
+  @media (max-width:1240px){.nav-links a[href="#about"]{display:none}}
   .nav-links a{padding:.3rem 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
   .nav-links a:hover{color:var(--ink);border-color:var(--teal)}
   .nav-cta{display:flex;gap:.6rem;align-items:center}
@@ -452,6 +457,105 @@
   .fifty .mug{width:min(100%,440px);filter:drop-shadow(0 30px 34px rgba(0,0,0,.35))}
   .menu-sec .sec-head.split{grid-template-columns:1fr;gap:22px}
   .menu-sec .sec-head h2{max-width:20ch}
+
+  /* v5: motion */
+  .nav .wrap,.brand img{transition:height .25s ease}
+  .nav.scrolled .wrap{height:60px}
+  .nav.scrolled .brand img{height:28px}.nav.scrolled .brand img.teh{height:23px}
+
+  /* hero showcase */
+  .show{position:relative;perspective:1400px;padding:0 12% 10% 0}
+  .show-stage{position:relative;aspect-ratio:4/3;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  .show-card{position:absolute;inset:0;margin:0;border-radius:var(--r);overflow:hidden;box-shadow:0 30px 60px -30px rgba(18,18,16,.45);background:var(--cream-2);opacity:0;pointer-events:none;transform:translate3d(24%,18%,-60px) rotate(11deg) scale(.86);transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity .9s ease;will-change:transform,opacity}
+  .show-card img{width:100%;height:100%;object-fit:cover;aspect-ratio:auto;border-radius:0;box-shadow:none;display:block}
+  .show-card.is-on{opacity:1;pointer-events:auto;transform:none;z-index:4}
+  .show-card.is-next{opacity:.95;transform:translate3d(9%,7%,-20px) rotate(4.5deg) scale(.95);z-index:3}
+  .show-card.is-next2{opacity:.8;transform:translate3d(18%,13%,-40px) rotate(8.5deg) scale(.9);z-index:2}
+  .show-card.is-out{opacity:0;transform:translate3d(-12%,-5%,60px) rotate(-5deg) scale(1.03);z-index:5}
+  .show-card figcaption{position:absolute;left:16px;bottom:16px;background:var(--paper);border-radius:999px;padding:.5rem .95rem .5rem .55rem;display:flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:600;color:var(--ink);box-shadow:0 8px 24px rgba(18,18,16,.18);max-width:calc(100% - 32px);transform:translateZ(50px)}
+  .show-card figcaption i{min-width:28px;height:28px;padding:0 .45rem;border-radius:999px;background:var(--terra);display:grid;place-items:center;color:#fff;font-family:var(--serif);font-weight:700;font-size:.78rem;font-style:normal;flex:none;letter-spacing:.02em}
+  .show-card figcaption b{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .show-card figcaption span{color:var(--terra);font-family:var(--serif);font-weight:700;white-space:nowrap}
+  .show .ever{z-index:6;right:calc(12% + 16px);top:16px;transform:translateZ(60px)}
+  .show-nav{position:absolute;left:16px;top:16px;display:flex;gap:6px;z-index:6}
+  .show-nav button{width:30px;height:5px;border-radius:3px;background:rgba(255,255,255,.45);position:relative;overflow:hidden;cursor:pointer;transition:background .2s}
+  .show-nav button:hover{background:rgba(255,255,255,.75)}
+  .show-nav button.on::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0);animation:showbar var(--dur,5s) linear forwards}
+  .show.paused .show-nav button.on::after{animation-play-state:paused}
+  @keyframes showbar{to{transform:scaleX(1)}}
+  .show-hint{position:absolute;right:calc(12% + 16px);bottom:calc(10% + 16px);z-index:6;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(18,18,16,.45);backdrop-filter:blur(6px);padding:.4rem .6rem;border-radius:4px;transform:translateZ(50px)}
+  @media (max-width:900px){.show{padding:0 9% 8% 0}.show .ever{right:calc(9% + 12px)}.show-hint{display:none}.show-card.is-next{transform:translate3d(7%,5%,-20px) rotate(4deg) scale(.95)}.show-card.is-next2{transform:translate3d(13%,9%,-40px) rotate(7deg) scale(.9)}}
+
+  /* photo marquee */
+  .marq{overflow:hidden;padding:6px 0 0;margin-top:clamp(28px,4vw,48px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .marq-track{display:flex;gap:14px;width:max-content;animation:marq var(--speed,70s) linear infinite}
+  .marq:hover .marq-track{animation-play-state:paused}
+  .marq figure{margin:0;width:clamp(170px,18vw,250px);aspect-ratio:1;border-radius:10px;overflow:hidden;position:relative;background:var(--cream-2);flex:none;transition:transform .35s ease}
+  .marq figure:nth-child(3n+2){transform:translateY(12px)}
+  .marq figure:hover{transform:translateY(-4px) scale(1.02)}
+  .marq img{width:100%;height:100%;object-fit:cover;display:block}
+  .marq figcaption{position:absolute;left:10px;bottom:10px;background:rgba(252,249,242,.92);padding:.3rem .55rem;border-radius:4px;font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;max-width:calc(100% - 20px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* text band */
+  .band{background:var(--ink);color:var(--cream);overflow:hidden;padding:13px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .band-track{display:flex;gap:2.2rem;width:max-content;animation:marq 40s linear infinite;font-family:var(--display);font-stretch:75%;font-weight:800;text-transform:uppercase;font-size:1.05rem;letter-spacing:.04em;white-space:nowrap}
+  .band-track span{display:inline-flex;align-items:center;gap:2.2rem}
+  .band-track span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  .band-track span:nth-child(2n)::after{background:var(--terra)}
+  .band-track span:nth-child(3n)::after{background:var(--gold)}
+  .band:hover .band-track{animation-play-state:paused}
+
+  /* scroll reveal (only when JS is running) */
+  .js [data-rv]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0)*70ms)}
+  .js [data-rv].in{opacity:1;transform:none}
+  .js [data-rv].in.plate{transition-property:opacity,transform,box-shadow}
+
+  /* 3D tilt on plates */
+  @media (hover:hover){
+    .plate{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0));transition:transform .18s ease,box-shadow .25s ease;position:relative}
+    .plate::after{content:"";position:absolute;inset:0;border-radius:var(--r);background:radial-gradient(240px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.35),transparent 60%);opacity:0;transition:opacity .25s;pointer-events:none}
+    .plate:hover{--ty:-6px;box-shadow:0 30px 50px -24px rgba(18,18,16,.4)}
+    .plate:hover::after{opacity:1}
+    .plate img{transition:transform .5s ease}
+    .plate:hover img{transform:scale(1.04)}
+    .branch{transition:transform .3s ease,box-shadow .3s ease}
+    .branch:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(18,18,16,.35)}
+  }
+  .js .in.plate{transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .18s ease,box-shadow .25s ease}
+
+  /* count-up numbers */
+  [data-count]{font-variant-numeric:tabular-nums}
+
+  /* menu rows */
+  .item{transition:transform .2s ease,background .2s ease}
+  .item:hover{transform:translateX(6px)}
+  .item:hover .price{color:var(--terra)}
+
+  /* parallax layers */
+  [data-px]{will-change:transform}
+  .fifty .mug{animation:bob 5s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+  .big50{display:inline-block}
+  .big50.pop{animation:pop .9s cubic-bezier(.2,.9,.3,1.3) both}
+  @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+
+  /* hero text entrance */
+  .js .hero-grid > div:first-child > *{opacity:0;transform:translateY(18px);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .js .hero-grid > div:first-child > *:nth-child(1){animation-delay:.05s}
+  .js .hero-grid > div:first-child > *:nth-child(2){animation-delay:.15s}
+  .js .hero-grid > div:first-child > *:nth-child(3){animation-delay:.28s}
+  .js .hero-grid > div:first-child > *:nth-child(4){animation-delay:.4s}
+  .js .hero-grid > div:first-child > *:nth-child(5){animation-delay:.5s}
+  @keyframes up{to{opacity:1;transform:none}}
+
+  @media (prefers-reduced-motion:reduce){
+    .marq-track,.band-track,.fifty .mug,.big50.pop,.js .hero-grid > div:first-child > *{animation:none!important;opacity:1!important;transform:none!important}
+    .js [data-rv]{opacity:1;transform:none;transition:none}
+    .show-card{transition:opacity .4s ease}
+    .show-stage{transform:none!important}
+    .plate{transform:none!important}
+  }
 </style>
 </head>
 <body>
@@ -527,26 +631,36 @@
         </div>
         <p class="hero-note"><span class="dot" data-status-dot></span><span data-status-text>Open Wed – Mon · Gelang Patah till 9pm · Larkin till 10pm · Closed Tuesdays</span></p>
       </div>
-      <div class="hero-photo">
-        <img src="photo-boat-noodle-phisek.jpg" alt="Boat Noodle Phisek Beef: rice noodles in dark beef broth with sliced beef, meatballs, egg and kangkung" width="1600" height="1200" fetchpriority="high">
+      <div class="hero-photo show" data-show>
+        <div class="show-nav" role="tablist" aria-label="Signature dishes"></div>
         <span class="ever">Evergreen taste</span>
-        <span class="tag"><i>N04</i> Boat Noodle Phisek Beef · RM15.90</span>
+        <div class="show-stage">
+          <figure class="show-card is-on"><img src="dv-hero-boat-noodle.jpg" alt="Boat Noodle Phisek Beef: rice noodles in dark beef broth with sliced beef, meatballs and egg" width="1600" height="1200" fetchpriority="high"><figcaption><i>N04</i><b>Boat Noodle Phisek Beef</b><span>RM15.90</span></figcaption></figure>
+          <figure class="show-card"><img src="dv-hero-nasi-kerabu.jpg" alt="Nasi Kerabu: blue rice, ulam, kerisik, keropok and fried chicken" width="1600" height="1200" loading="lazy"><figcaption><i>RK02</i><b>Nasi Kerabu Fried Chicken</b><span>RM15.90</span></figcaption></figure>
+          <figure class="show-card"><img src="dv-hero-crying-tiger.jpg" alt="Crying Tiger grilled beef with sticky rice and nam jim jaew" width="1600" height="1200" loading="lazy"><figcaption><i>SP07</i><b>Crying Grill Beef + Sticky Rice</b><span>RM26.90</span></figcaption></figure>
+          <figure class="show-card"><img src="dv-hero-tomyum-noodles.jpg" alt="Chicken tomyum soup noodles, red broth with tomato and lime" width="1600" height="1200" loading="lazy"><figcaption><i>NT08</i><b>Tomyum Noodle, Chicken</b><span>RM20.90</span></figcaption></figure>
+          <figure class="show-card"><img src="dv-hero-khao-kluk-kapi.jpg" alt="Khao Kluk Kapi: shrimp-paste fried rice with sweet beef, green mango, shallot and omelette" width="1600" height="1200" loading="lazy"><figcaption><i>SP09</i><b>Khao Kluk Kapi</b><span>RM22.50</span></figcaption></figure>
+          <figure class="show-card"><img src="dv-hero-desserts.jpg" alt="Banana caramel on a sizzling plate, mango sticky rice and chocolate brownie" width="1600" height="1200" loading="lazy"><figcaption><i>D2</i><b>Banana Caramel</b><span>RM13.90</span></figcaption></figure>
+        </div>
+        <span class="show-hint" aria-hidden="true">Signature plates</span>
       </div>
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="n"><span class="star">★</span>4.4 <small>/ 5</small></div><div class="l">1,159 Google reviews · Gelang Patah</div></div>
-      <div class="stat"><div class="n"><span class="star">★</span>4.6 <small>/ 5</small></div><div class="l">639 reviews · Thamada Village, Larkin</div></div>
-      <div class="stat"><div class="n">RM0.50</div><div class="l">Teh O. Still. It's on the 2025 menu.</div></div>
-      <div class="stat"><div class="n">2 <small>kedai</small></div><div class="l">Gelang Patah &amp; Larkin, JB</div></div>
+      <div class="stat"><div class="n"><span class="star">★</span><span data-count="4.4" data-dec="1">4.4</span> <small>/ 5</small></div><div class="l">1,159 Google reviews · Gelang Patah</div></div>
+      <div class="stat"><div class="n"><span class="star">★</span><span data-count="4.6" data-dec="1">4.6</span> <small>/ 5</small></div><div class="l">639 reviews · Thamada Village, Larkin</div></div>
+      <div class="stat"><div class="n">RM<span data-count="0.50" data-dec="2" data-from="9.90">0.50</span></div><div class="l">Teh O. Still. It's on the 2025 menu.</div></div>
+      <div class="stat"><div class="n"><span data-count="2" data-from="0">2</span> <small>kedai</small></div><div class="l">Gelang Patah &amp; Larkin, JB</div></div>
     </div>
   </div>
 </section>
+<!-- PHOTO MARQUEE (v5). Two copies of the same list = seamless loop; keep both in sync. -->
+<div class="marq" aria-hidden="true"><div class="marq-track"><figure><img src="dv-m00.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Beef ribs clear soup noodle · N07</figcaption></figure><figure><img src="dv-m19.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Tomyum noodle, chicken · NT08</figcaption></figure><figure><img src="dv-m07.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thamada Rice fried chicken · RS01</figcaption></figure><figure><img src="dv-m12.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Crispy prawn omelette · AC08</figcaption></figure><figure><img src="dv-m15.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Khao Kluk Kapi · SP09</figcaption></figure><figure><img src="dv-m31.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Teh O Ice 50 sen · Cha Yen</figcaption></figure><figure><img src="dv-m10.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Pad Kra Pao + egg · SP04</figcaption></figure><figure><img src="dv-m03.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thamada drumstick kway chap · TN01</figcaption></figure><figure><img src="dv-m25.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Banana caramel · Mango sticky rice</figcaption></figure><figure><img src="dv-m14.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Garlic spinach with prawns · AC09</figcaption></figure><figure><img src="dv-m28.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Khao Niew Gai Tod · S1</figcaption></figure><figure><img src="dv-m04.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Tomyum stir-fried noodles · TN05</figcaption></figure><figure><img src="dv-m24.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Chicken popcorn · Ebi crispy</figcaption></figure><figure><img src="dv-m11.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Chicken tomyam soup + rice · SP14</figcaption></figure><figure><img src="dv-m27.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thai mango salad · S4</figcaption></figure><figure><img src="dv-m29.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Milkshakes · MS1–MS6</figcaption></figure><figure><img src="dv-m18.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thamada fried rice, prawn · SP10</figcaption></figure><figure><img src="dv-m09.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Beef ribs clear soup + rice · SP03</figcaption></figure><figure><img src="dv-m23.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Little kiddo meal · KM01</figcaption></figure><figure><img src="dv-m26.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Spicy Thai yum mama · S7</figcaption></figure><figure><img src="dv-m17.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thai chicken rice porridge · SP01</figcaption></figure><figure><img src="dv-m02.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Chicken tom yum soup noodles · TN04</figcaption></figure><figure><img src="dv-m13.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Crying grilled beef + rice · SP08</figcaption></figure><figure><img src="dv-m20.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Ala carte spread</figcaption></figure><figure><img src="dv-m00.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Beef ribs clear soup noodle · N07</figcaption></figure><figure><img src="dv-m19.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Tomyum noodle, chicken · NT08</figcaption></figure><figure><img src="dv-m07.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thamada Rice fried chicken · RS01</figcaption></figure><figure><img src="dv-m12.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Crispy prawn omelette · AC08</figcaption></figure><figure><img src="dv-m15.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Khao Kluk Kapi · SP09</figcaption></figure><figure><img src="dv-m31.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Teh O Ice 50 sen · Cha Yen</figcaption></figure><figure><img src="dv-m10.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Pad Kra Pao + egg · SP04</figcaption></figure><figure><img src="dv-m03.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thamada drumstick kway chap · TN01</figcaption></figure><figure><img src="dv-m25.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Banana caramel · Mango sticky rice</figcaption></figure><figure><img src="dv-m14.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Garlic spinach with prawns · AC09</figcaption></figure><figure><img src="dv-m28.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Khao Niew Gai Tod · S1</figcaption></figure><figure><img src="dv-m04.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Tomyum stir-fried noodles · TN05</figcaption></figure><figure><img src="dv-m24.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Chicken popcorn · Ebi crispy</figcaption></figure><figure><img src="dv-m11.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Chicken tomyam soup + rice · SP14</figcaption></figure><figure><img src="dv-m27.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thai mango salad · S4</figcaption></figure><figure><img src="dv-m29.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Milkshakes · MS1–MS6</figcaption></figure><figure><img src="dv-m18.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thamada fried rice, prawn · SP10</figcaption></figure><figure><img src="dv-m09.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Beef ribs clear soup + rice · SP03</figcaption></figure><figure><img src="dv-m23.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Little kiddo meal · KM01</figcaption></figure><figure><img src="dv-m26.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Spicy Thai yum mama · S7</figcaption></figure><figure><img src="dv-m17.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Thai chicken rice porridge · SP01</figcaption></figure><figure><img src="dv-m02.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Chicken tom yum soup noodles · TN04</figcaption></figure><figure><img src="dv-m13.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Crying grilled beef + rice · SP08</figcaption></figure><figure><img src="dv-m20.jpg" alt="" loading="lazy" width="500" height="500"><figcaption>Ala carte spread</figcaption></figure></div></div>
 
 <!-- BRANCHES -->
 <section id="kedai">
   <div class="wrap">
-    <div class="sec-head split">
+    <div class="sec-head split" data-rv>
       <div>
         <span class="eyebrow left">Our two kedai</span>
         <h2 style="margin-top:14px">Same family. Same kitchen. <span class="script">Two moods.</span></h2>
@@ -555,7 +669,7 @@
     </div>
 
     <div class="branches">
-      <article class="branch" id="gelang-patah">
+      <article class="branch" id="gelang-patah" data-rv>
         <div class="map"><iframe title="Map: Teh O Ice 50 Cent & Boat Noodle, Gelang Patah" src="https://www.google.com/maps?q=Teh+O+Ice+50+Cent+%26+Boat+Noodle,+Jalan+Nusaria+11%2F4,+Taman+Nusantara,+Gelang+Patah&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
         <div class="body">
           <img class="logo" src="logo-tehoice.png" alt="" width="460" height="170">
@@ -563,7 +677,7 @@
           <p>Simple, done right. The one that went viral for a 50 sen teh o and a RM3.90 boat noodle, then quietly built a menu people drive across JB for: sweet garlic chicken, tomyam, crying tiger.</p>
           <span class="pill" data-pill="gp"><span class="dot"></span><span data-status-text="gp">Open today until 9.00pm</span></span>
           <div class="details">
-            <div class="row"><svg><use href="#i-pin"/></svg><div><span class="k">Address</span>No 58, Jalan Nusaria 11/4, Taman Nusantara,<br>81550 Gelang Patah, Johor</div></div>
+            <div class="row"><svg><use href="#i-pin"/></svg><div><span class="k">Address</span>58-01, Jalan Nusaria 11/4, Taman Nusantara,<br>81550 Gelang Patah, Johor</div></div>
             <div class="row"><svg><use href="#i-clock"/></svg><div><span class="k">Hours</span>Wed – Mon · 11.30am – 9.00pm<br>Tuesday closed</div></div>
             <div class="row"><svg><use href="#i-phone"/></svg><div><span class="k">Call / WhatsApp</span><a href="tel:+6075964141">07-596 4141</a> · <a href="https://wa.me/60187604149?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20tanya%3A%20" target="_blank" rel="noopener">018-760 4149</a></div></div>
           </div>
@@ -576,7 +690,7 @@
         </div>
       </article>
 
-      <article class="branch village" id="larkin">
+      <article class="branch village" id="larkin" data-rv>
         <div class="map"><iframe title="Map: Thamada Village Restaurant, Larkin" src="https://www.google.com/maps?q=Thamada+Village+Restaurant,+Jalan+Geroda+2%2F1,+Larkin,+Johor+Bahru&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
         <div class="body">
           <img class="logo" src="logo-thamada.png" alt="" width="580" height="170">
@@ -599,20 +713,23 @@
     </div>
 
     <div class="strip">
-      <figure><img src="photo-gp-set.jpg" alt="Lunch set with iced drinks at Teh O Ice, Gelang Patah" loading="lazy" width="1200" height="1200"><figcaption>Gelang Patah · lunch set</figcaption></figure>
-      <figure><img src="photo-gp-friedrice.jpg" alt="Thamada fried rice with prawn and a fried egg, Gelang Patah" loading="lazy" width="1200" height="1200"><figcaption>Gelang Patah · fried rice</figcaption></figure>
-      <figure><img src="photo-beef-sets.jpg" alt="Grilled beef sets with rice on banana leaf, Thamada Village" loading="lazy" width="1200" height="1200"><figcaption>Larkin · grilled beef sets</figcaption></figure>
-      <figure><img src="photo-larkin-interior.jpg" alt="Inside Thamada Village Larkin: wooden chairs, rattan pendant lamps, plants" loading="lazy" width="640" height="376"><figcaption>Larkin · inside</figcaption></figure>
-      <figure><img src="photo-larkin-signboard.jpg" alt="Thamada Village signboard, Larkin" loading="lazy" width="640" height="382"><figcaption>Larkin · Jalan Geroda 2/1</figcaption></figure>
-      <figure><img src="photo-larkin-front.jpg" alt="Customers at the front of Thamada Village Larkin" loading="lazy" width="640" height="378"><figcaption>Larkin · lunch crowd</figcaption></figure>
+      <figure data-rv><img src="photo-gp-set.jpg" alt="Lunch set with iced drinks at Teh O Ice, Gelang Patah" loading="lazy" width="1200" height="1200"><figcaption>Gelang Patah · lunch set</figcaption></figure>
+      <figure data-rv><img src="photo-gp-friedrice.jpg" alt="Thamada fried rice with prawn and a fried egg, Gelang Patah" loading="lazy" width="1200" height="1200"><figcaption>Gelang Patah · fried rice</figcaption></figure>
+      <figure data-rv><img src="photo-beef-sets.jpg" alt="Grilled beef sets with rice on banana leaf, Thamada Village" loading="lazy" width="1200" height="1200"><figcaption>Larkin · grilled beef sets</figcaption></figure>
+      <figure data-rv><img src="photo-larkin-interior.jpg" alt="Inside Thamada Village Larkin: wooden chairs, rattan pendant lamps, plants" loading="lazy" width="640" height="376"><figcaption>Larkin · inside</figcaption></figure>
+      <figure data-rv><img src="photo-larkin-signboard.jpg" alt="Thamada Village signboard, Larkin" loading="lazy" width="640" height="382"><figcaption>Larkin · Jalan Geroda 2/1</figcaption></figure>
+      <figure data-rv><img src="photo-larkin-front.jpg" alt="Customers at the front of Thamada Village Larkin" loading="lazy" width="640" height="378"><figcaption>Larkin · lunch crowd</figcaption></figure>
     </div>
   </div>
 </section>
 
+<!-- TEXT BAND (v5) -->
+<div class="band" aria-hidden="true"><div class="band-track"><span>Boat noodle from RM3.90</span><span>Teh O 50 sen</span><span>Nasi kerabu</span><span>Crying tiger</span><span>Tomyam seafood</span><span>Khao mok gai</span><span>Pad kra pao</span><span>Banana caramel</span><span>Halal · Muslim-owned</span><span>Gelang Patah</span><span>Larkin, JB</span><span>Closed Tuesdays</span><span>Boat noodle from RM3.90</span><span>Teh O 50 sen</span><span>Nasi kerabu</span><span>Crying tiger</span><span>Tomyam seafood</span><span>Khao mok gai</span><span>Pad kra pao</span><span>Banana caramel</span><span>Halal · Muslim-owned</span><span>Gelang Patah</span><span>Larkin, JB</span><span>Closed Tuesdays</span></div></div>
+
 <!-- SIGNATURE PLATES -->
 <section id="plates" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head split">
+    <div class="sec-head split" data-rv>
       <div>
         <span class="eyebrow left">Signature plates</span>
         <h2 style="margin-top:14px">Eight things people <span class="script">drive across JB for.</span></h2>
@@ -620,14 +737,14 @@
       <p class="lede" style="max-width:36ch">Photographed for the 2025 menu. Prices are dine-in, before service charge and SST.</p>
     </div>
     <div class="plates">
-      <a class="plate" href="#c-kerabu"><img src="photo-nasi-kerabu.jpg" alt="Nasi Kerabu with fried chicken, keropok and ulam" loading="lazy" width="1000" height="1000"><div class="pt"><b>Nasi Kerabu Fried Chicken</b><span>RM15.90</span></div><small>Blue rice, ulam, kerisik, budu, salted egg. RK02.</small></a>
-      <a class="plate" href="#c-plate"><img src="photo-crying-tiger.jpg" alt="Crying Tiger grilled beef with sticky rice" loading="lazy" width="588" height="588"><div class="pt"><b>Crying Grill Beef + Sticky Rice</b><span>RM26.90</span></div><small>Sua rong hai. Grilled beef, nam jim jaew. SP07.</small></a>
-      <a class="plate" href="#c-plate"><img src="photo-sweet-garlic-chicken.jpg" alt="Sweet garlic chicken with rice" loading="lazy" width="558" height="558"><div class="pt"><b>Sweet Garlic Chicken + Rice</b><span>RM15.90</span></div><small>The dish in half the Google reviews. Comes with mini soup. SP11.</small></a>
-      <a class="plate" href="#c-plate"><img src="photo-pad-kra-pao.jpg" alt="Chicken pad kra pao with rice and fried egg" loading="lazy" width="561" height="561"><div class="pt"><b>Chicken Pad Kra Pao + Rice + Egg</b><span>RM16.90</span></div><small>Holy basil, bird's-eye chili, runny egg. SP04.</small></a>
-      <a class="plate" href="#c-rice"><img src="photo-khao-mok-gai.jpg" alt="Khao Mok Gai, Thai chicken biryani" loading="lazy" width="820" height="820"><div class="pt"><b>Khao Mok Gai</b><span>RM17.90</span></div><small>Thai-Muslim chicken biryani, sweet-sour dip. SP02.</small></a>
-      <a class="plate" href="#c-rice"><img src="photo-thamada-rice.jpg" alt="Thamada Rice set with fried chicken" loading="lazy" width="1000" height="1000"><div class="pt"><b>Thamada Rice Fried Chicken</b><span>RM11.90</span></div><small>The set that feeds the lunch crowd. RS01.</small></a>
-      <a class="plate" href="#c-sweet"><img src="photo-sangkaya.jpg" alt="Sangkaya pandan custard with steamed bread cubes" loading="lazy" width="1000" height="1000"><div class="pt"><b>Sangkaya</b><span>RM10.90</span></div><small>Pandan coconut custard, steamed bread for dipping. D4.</small></a>
-      <a class="plate" href="#c-sweet"><img src="photo-banana-caramel.jpg" alt="Banana caramel on a sizzling plate with ice cream" loading="lazy" width="1440" height="1800"><div class="pt"><b>Banana Caramel</b><span>RM13.90</span></div><small>Hot plate, cold scoop. One spoon and you'll understand. D2.</small></a>
+      <a class="plate" data-rv href="#c-kerabu"><img src="dv-plate-nasi-kerabu.jpg" alt="Nasi Kerabu with fried chicken, keropok and ulam" loading="lazy" width="1000" height="1000"><div class="pt"><b>Nasi Kerabu Fried Chicken</b><span>RM15.90</span></div><small>Blue rice, ulam, kerisik, budu, salted egg. RK02.</small></a>
+      <a class="plate" data-rv href="#c-plate"><img src="dv-plate-crying-tiger.jpg" alt="Crying Tiger grilled beef with sticky rice" loading="lazy" width="1000" height="1000"><div class="pt"><b>Crying Grill Beef + Sticky Rice</b><span>RM26.90</span></div><small>Sua rong hai. Grilled beef, nam jim jaew. SP07.</small></a>
+      <a class="plate" data-rv href="#c-plate"><img src="photo-sweet-garlic-chicken.jpg" alt="Sweet garlic chicken with rice" loading="lazy" width="558" height="558"><div class="pt"><b>Sweet Garlic Chicken + Rice</b><span>RM15.90</span></div><small>The dish in half the Google reviews. Comes with mini soup. SP11.</small></a>
+      <a class="plate" data-rv href="#c-plate"><img src="dv-plate-pad-kra-pao.jpg" alt="Chicken pad kra pao with rice and fried egg" loading="lazy" width="1000" height="1000"><div class="pt"><b>Chicken Pad Kra Pao + Rice + Egg</b><span>RM16.90</span></div><small>Holy basil, bird's-eye chili, runny egg. SP04.</small></a>
+      <a class="plate" data-rv href="#c-rice"><img src="dv-plate-khao-mok-gai.jpg" alt="Khao Mok Gai, Thai chicken biryani, with sweet-sour dip" loading="lazy" width="1000" height="1000"><div class="pt"><b>Khao Mok Gai</b><span>RM17.90</span></div><small>Thai-Muslim chicken biryani, sweet-sour dip. SP02.</small></a>
+      <a class="plate" data-rv href="#c-rice"><img src="dv-plate-thamada-rice.jpg" alt="Thamada Rice set with fried chicken" loading="lazy" width="1000" height="1000"><div class="pt"><b>Thamada Rice Fried Chicken</b><span>RM11.90</span></div><small>The set that feeds the lunch crowd. RS01.</small></a>
+      <a class="plate" data-rv href="#c-sweet"><img src="photo-sangkaya.jpg" alt="Sangkaya pandan custard with steamed bread cubes" loading="lazy" width="1000" height="1000"><div class="pt"><b>Sangkaya</b><span>RM10.90</span></div><small>Pandan coconut custard, steamed bread for dipping. D4.</small></a>
+      <a class="plate" data-rv href="#c-sweet"><img src="photo-banana-caramel.jpg" alt="Banana caramel on a sizzling plate with ice cream" loading="lazy" width="1440" height="1800"><div class="pt"><b>Banana Caramel</b><span>RM13.90</span></div><small>Hot plate, cold scoop. One spoon and you'll understand. D2.</small></a>
     </div>
   </div>
 </section>
@@ -635,7 +752,7 @@
 <!-- MENU -->
 <section id="menu" class="menu-sec">
   <div class="wrap">
-    <div class="sec-head split">
+    <div class="sec-head split" data-rv>
       <div>
         <span class="eyebrow left">Menu 2025</span>
         <h2 style="margin-top:14px">Cooked the Southern way. <span class="script">Priced the kampung way.</span></h2>
@@ -652,7 +769,7 @@
     </div>
 
     <div class="menu-grid">
-      <div class="cat" id="c-noodle">
+      <div class="cat" data-rv id="c-noodle">
         <div class="cat-head"><h3>Noodle</h3><span class="thai">ก๋วยเตี๋ยว · Thai rice noodle or spring noodle</span></div>
         <div class="items">
           <div class="item"><div class="top"><span class="name">Boat Noodle Chicken <em>N01</em></span><span class="dots"></span></div><span class="price">3.90</span></div>
@@ -667,7 +784,7 @@
         </div>
       </div>
 
-      <div class="cat" id="c-kerabu">
+      <div class="cat" data-rv id="c-kerabu">
         <div class="cat-head"><h3>Nasi Kerabu</h3><span class="thai">นาซี เคราบู · Blue rice, Southern Thai–Kelantan</span></div>
         <div class="items">
           <div class="item"><div class="top"><span class="name">Nasi Kerabu Basic, Telur Masin <em>RK01</em> <span class="tag green">Bunga telang</span></span><span class="dots"></span></div><span class="price">9.90</span><p class="desc">Blue rice, ulam, kerisik, budu, salted egg, keropok.</p></div>
@@ -687,7 +804,7 @@
         </div>
       </div>
 
-      <div class="cat" id="c-plate">
+      <div class="cat" data-rv id="c-plate">
         <div class="cat-head"><h3>Single Plate</h3><span class="thai">จานเดียว · Most come with mini tomyum or mini clear soup</span></div>
         <div class="items">
           <div class="item"><div class="top"><span class="name">Chicken Pad Kra Pao + Rice + Egg <em>SP04</em> <span class="heat"><i></i><i></i><i class="o"></i></span></span><span class="dots"></span></div><span class="price">16.90</span></div>
@@ -704,7 +821,7 @@
         </div>
       </div>
 
-      <div class="cat" id="c-sides">
+      <div class="cat" data-rv id="c-sides">
         <div class="cat-head"><h3>Ala Carte &amp; Sides</h3><span class="thai">กับข้าว · To share</span></div>
         <div class="items">
           <div class="item"><div class="top"><span class="name">Beef Ribs Clear Soup <em>AC01</em></span><span class="dots"></span></div><span class="price">26.90</span></div>
@@ -727,7 +844,7 @@
         </div>
       </div>
 
-      <div class="cat" id="c-drink">
+      <div class="cat" data-rv id="c-drink">
         <div class="cat-head"><h3>Drinks</h3><span class="thai">เครื่องดื่ม · hot / cold</span></div>
         <div class="items">
           <div class="item"><div class="top"><span class="name">Teh O <span class="tag best">50 sen</span></span><span class="dots"></span></div><span class="price">0.50 <small>/</small> 0.50</span><p class="desc">Yes, still. Big cup or takeaway: 2.00 / 2.50.</p></div>
@@ -763,12 +880,12 @@
 <section id="table" class="table-sec">
   <div class="wrap">
     <div>
-      <img src="photo-table-spread.jpg" alt="A full table at Thamada: boat noodle in teal bowls, nasi kerabu, khao kluk kapi, spring rolls, mango sticky rice" width="1800" height="1195">
+      <img data-px="-.08" src="dv-table-spread.jpg" alt="A full table at Thamada: boat noodle in teal bowls, nasi kerabu, khao kluk kapi, spring rolls, mango sticky rice" width="1800" height="1195">
     </div>
     <div>
       <span class="eyebrow left">One table, five people</span>
       <h2 style="margin-top:14px;font-size:clamp(2.4rem,4.6vw,3.8rem)">What a table <span class="script" style="color:var(--teal);font-size:1.15em">actually looks like.</span></h2>
-      <div class="table-list">
+      <div class="table-list" data-rv>
         <div class="row"><span class="n">1</span><span class="d">Boat Noodle Beef, two bowls each<small>The small bowls. Nobody stops at one.</small></span><span class="p">RM3.90</span></div>
         <div class="row"><span class="n">2</span><span class="d">Nasi Kerabu Fried Chicken<small>Blue rice, ulam, budu, the whole plate</small></span><span class="p">RM15.90</span></div>
         <div class="row"><span class="n">3</span><span class="d">Khao Kluk Kapi<small>Shrimp-paste fried rice, omelette, green mango</small></span><span class="p">RM22.50</span></div>
@@ -788,7 +905,7 @@
   <div class="wrap">
     <div>
       <img class="logo" src="logo-tehoice.png" alt="Teh O Ice & Boat Noodle" width="460" height="170">
-      <div class="big50" aria-label="50 sen">50<span class="sen">sen</span></div>
+      <div class="big50" aria-label="50 sen" data-pop>50<span class="sen">sen</span></div>
       <h2>A teh o that costs less than the parking.</h2>
       <p>A 50 sen teh o was the signboard promise that opened the doors in Taman Nusantara. It became the reason a whole housing area learned the words "boat noodle". A decade on, prices for everything else have moved. This one is still printed on the 2025 menu.</p>
       <div class="facts">
@@ -829,7 +946,7 @@
 <!-- REVIEWS -->
 <section id="reviews">
   <div class="wrap">
-    <div class="sec-head split">
+    <div class="sec-head split" data-rv>
       <div>
         <span class="eyebrow left">What people say</span>
         <h2 style="margin-top:14px">Nearly two thousand reviews. <span class="script">Mostly about the tomyam.</span></h2>
@@ -840,17 +957,17 @@
       </div>
     </div>
     <div class="reviews">
-      <div class="rev">
+      <div class="rev" data-rv>
         <div class="stars">★★★★★</div>
         <p class="q">Sweet garlic chicken rice and tomyum is so good. Best tomyam in town — sour and spicy enough.”</p>
         <div class="who">Google review · Teh O Ice 50¢, Gelang Patah</div>
       </div>
-      <div class="rev">
+      <div class="rev" data-rv>
         <div class="stars">★★★★★</div>
         <p class="q">A cozy Thai gem. Flavorful boat noodles with rich broth and tender beef. The sangkaya is a must.”</p>
         <div class="who">Google review · Thamada Village, Larkin</div>
       </div>
-      <div class="rev">
+      <div class="rev" data-rv>
         <div class="stars">★★★★★</div>
         <p class="q">Staff friendly and polite, always smiling. Great ambience, music wasn't too loud. Macam makan dekat Thailand.”</p>
         <div class="who">Google review · Teh O Ice 50¢, Gelang Patah</div>
@@ -862,27 +979,27 @@
 <!-- ORDER -->
 <section id="order" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-rv>
       <span class="eyebrow left">Order</span>
       <h2>Four ways <span class="script">to eat.</span></h2>
     </div>
     <div class="ways">
-      <div class="way">
+      <div class="way" data-rv>
         <h3>Walk in</h3>
         <p>No queue app. Come before 12.30 or after 2.00 on weekends and you will get a table without waiting.</p>
         <div class="acts"><a class="btn ghost small" href="#kedai" data-nearest><svg><use href="#i-nav"/></svg>Directions</a></div>
       </div>
-      <div class="way">
+      <div class="way" data-rv>
         <h3>Reserve</h3>
         <p>Groups of eight or more, from 3pm onwards. WhatsApp the date, time and headcount and the crew will hold a table.</p>
         <div class="acts"><a class="btn wa small" href="https://wa.me/60183284149?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20reserve%20meja.%0ATarikh%3A%20%0AMasa%3A%20%0ABilangan%20orang%3A%20" target="_blank" rel="noopener">Larkin</a><a class="btn wa small" href="https://wa.me/60187604149?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20reserve%20meja.%0ATarikh%3A%20%0AMasa%3A%20%0ABilangan%20orang%3A%20" target="_blank" rel="noopener">Gelang Patah</a></div>
       </div>
-      <div class="way">
+      <div class="way" data-rv>
         <h3>Pickup</h3>
         <p>Order ahead on WhatsApp, collect at the counter. Ask for the broth packed separately and the boat noodle arrives as it should.</p>
         <div class="acts"><a class="btn ghost small" href="https://wa.me/60183284149?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20order%20pickup%2Ftakeaway%3A%20" target="_blank" rel="noopener">Larkin</a><a class="btn ghost small" href="https://wa.me/60187604149?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20order%20pickup%2Ftakeaway%3A%20" target="_blank" rel="noopener">Gelang Patah</a></div>
       </div>
-      <div class="way">
+      <div class="way" data-rv>
         <h3>Delivery</h3>
         <p>Both kedai on GrabFood. Thamada Village Larkin also on foodpanda, during opening hours.</p>
         <div class="acts"><a class="btn dark small" href="https://r.grab.com/g/6-20240229_120429_de7a28ac5e49cb0c_MEXMPS-1-C33GJLJKLTTURT" target="_blank" rel="noopener">Grab · Larkin</a><a class="btn dark small" href="https://grab.onelink.me/2695613898?pid=inappsharing&c=1-C2TGGKCETBLCRE&is_retargeting=true&af_dp=grab%3A%2F%2Fopen%3FscreenType%3DGRABFOOD%26sourceID%3DA4pcqCZkS4%26merchantIDs%3D1-C2TGGKCETBLCRE&af_force_deeplink=true&af_web_dp=https%3A%2F%2Fwww.grab.com" target="_blank" rel="noopener">Grab · Gelang Patah</a><a class="btn primary small" href="https://www.foodpanda.my/restaurant/p1b9/thamada-village-larkin" target="_blank" rel="noopener">foodpanda</a></div>
@@ -894,7 +1011,7 @@
 <!-- FAQ -->
 <section id="faq" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-rv>
       <span class="eyebrow left">Good to know</span>
       <h2>Questions we get <span class="script">on WhatsApp.</span></h2>
     </div>
@@ -916,7 +1033,7 @@
 <!-- ABOUT · plain-language copy for search: what, where, who it is near -->
 <section id="about" class="about">
   <div class="wrap">
-    <div class="sec-head split">
+    <div class="sec-head split" data-rv>
       <div>
         <span class="eyebrow left">About</span>
         <h2 style="margin-top:14px">Halal Thai food in Johor Bahru <span class="script">since 2016.</span></h2>
@@ -924,12 +1041,12 @@
       <p class="lede" style="max-width:38ch">Restoran Thai halal, Muslim-owned, family-run. Two kedai, one kitchen, one very cheap teh o.</p>
     </div>
     <div class="about-grid">
-      <div>
+      <div data-rv>
         <p><strong>Teh O Ice 50 Cent &amp; Boat Noodle</strong> opened in Taman Nusantara, Gelang Patah, with a simple idea: a proper Southern Thai boat noodle at a price a student can pay, and a teh o ais for 50 sen. More than a thousand Google reviews later, it is a regular stop for families from Iskandar Puteri, Bukit Indah, Nusajaya and Skudai, and for Singaporeans ten minutes in from the Tuas Second Link.</p>
         <p><strong>Thamada Village Restaurant</strong> in Larkin is the same family's second kitchen: a bigger, greener dining room near Larkin Sentral and JB Sentral, with the full Southern Thai menu. Nasi kerabu, tomyam seafood, crying tiger, pad kra pao, khao mok gai, sangkaya and banana caramel: Southern Thai cooking, priced the kampung way.</p>
         <p>Both kedai are halal (no pork, no lard, no alcohol), air-conditioned, and take walk-ins, WhatsApp reservations, pickup orders, GrabFood and foodpanda. Menu, prices and opening hours on this page are the current 2025 menu; prices are before 10% service charge and 6% SST.</p>
       </div>
-      <div class="about-list">
+      <div class="about-list" data-rv>
         <h3>Near the Gelang Patah kedai</h3>
         <p><b>A short drive from:</b> Gelang Patah, Taman Nusantara, Iskandar Puteri, Nusajaya, Bukit Indah, Horizon Hills, Skudai, Kulai, Pontian, and Tuas / Second Link crossings from Singapore.</p>
         <h3>Near the Larkin kedai</h3>
@@ -959,13 +1076,13 @@
       <div>
         <div class="logos"><img src="logo-thamada.png" alt="Thamada Village" width="580" height="170"><img class="teh" src="logo-tehoice.png" alt="Teh O Ice & Boat Noodle" width="460" height="170"></div>
         <p>Halal Southern Thai food in Johor Bahru since 2016. Muslim-owned, family-run, two kedai and one very cheap teh o.</p>
-        <p style="font-size:.78rem;color:var(--muted)">Teh O Ice &amp; Boat Noodle Sdn Bhd (1268825-U)<br>Thamada Village Restaurant (AS0452224-V)</p>
+        <p style="font-size:.78rem;color:var(--muted)">Teh O Ice &amp; Boat Noodle · NF Food and Beverage Sdn Bhd<br>Thamada Village Restaurant · 202203205668 (AS0452224-V)<br><a href="mailto:hello@thamadavillage.com" style="border-bottom:1px solid var(--line-strong)">hello@thamadavillage.com</a></p>
         <p style="font-size:.8rem"><a href="https://wa.me/601154400311?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20beri%20feedback%3A%20" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line-strong);font-weight:600">Feedback &amp; complaints hotline →</a></p>
       </div>
       <div>
         <h4>Gelang Patah</h4>
         <ul>
-          <li>No 58, Jalan Nusaria 11/4, Taman Nusantara, 81550 Gelang Patah</li>
+          <li>58-01, Jalan Nusaria 11/4, Taman Nusantara, 81550 Gelang Patah</li>
           <li><a href="tel:+6075964141">07-596 4141</a> · <a href="https://wa.me/60187604149?text=Hi%2C%20saya%20dari%20website%20thamadavillage.com.%20Nak%20tanya%3A%20" target="_blank" rel="noopener">018-760 4149</a></li>
           <li>Wed – Mon 11.30am – 9.00pm</li>
         </ul>
@@ -993,7 +1110,7 @@
       </div>
     </div>
     <div class="fbot">
-      <span>© 2026 Teh O Ice &amp; Boat Noodle Sdn Bhd. All rights reserved.</span>
+      <span>© 2026 NF Food and Beverage Sdn Bhd · Thamada Village Restaurant. All rights reserved.</span>
       <span>Closed every Tuesday. Rehat sekejap.</span>
     </div>
   </div>
@@ -1087,6 +1204,95 @@
       entries.forEach(function(e){if(e.isIntersecting){chips.forEach(function(c){c.classList.toggle('on',c.getAttribute('href')==='#'+e.target.id)})}});
     },{rootMargin:'-40% 0px -50% 0px'});
     cats.forEach(function(c){io.observe(c)});
+  }
+})();
+</script>
+
+<script>
+/* v5 motion: hero showcase, scroll reveal, 3D tilt, count-up, parallax, nav shrink. All optional; page works without it. */
+(function(){
+  var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var HOVER=window.matchMedia&&matchMedia('(hover:hover)').matches;
+
+  // ---- nav shrink
+  var nav=document.getElementById('nav');
+  function onS(){nav.classList.toggle('scrolled',window.scrollY>40)}
+  window.addEventListener('scroll',onS,{passive:true});onS();
+
+  // ---- scroll reveal
+  var rv=Array.prototype.slice.call(document.querySelectorAll('[data-rv]'));
+  var byParent=new Map();
+  rv.forEach(function(el){var p=el.parentNode;var i=byParent.get(p)||0;el.style.setProperty('--d',Math.min(i,7));byParent.set(p,i+1)});
+  if('IntersectionObserver' in window&&!RM){
+    var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    rv.forEach(function(el){ro.observe(el)});
+    setTimeout(function(){rv.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in')})},80);
+  }else{rv.forEach(function(el){el.classList.add('in')})}
+
+  // ---- hero showcase
+  var show=document.querySelector('[data-show]');
+  if(show){
+    var cards=Array.prototype.slice.call(show.querySelectorAll('.show-card')),navEl=show.querySelector('.show-nav'),stage=show.querySelector('.show-stage');
+    var i=0,timer=null,DUR=5000,paused=false;
+    show.style.setProperty('--dur',DUR+'ms');
+    cards.forEach(function(c,k){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-label',(c.querySelector('b')||{}).textContent||('Dish '+(k+1)));b.addEventListener('click',function(){go(k,true)});navEl.appendChild(b)});
+    var dots=Array.prototype.slice.call(navEl.children);
+    function paint(){
+      var n=cards.length;
+      cards.forEach(function(c,k){
+        c.classList.remove('is-on','is-next','is-next2','is-out');
+        if(k===i)c.classList.add('is-on');
+        else if(k===(i+1)%n)c.classList.add('is-next');
+        else if(k===(i+2)%n)c.classList.add('is-next2');
+        else if(k===(i-1+n)%n)c.classList.add('is-out');
+      });
+      dots.forEach(function(d,k){d.classList.toggle('on',k===i);d.setAttribute('aria-selected',k===i?'true':'false')});
+    }
+    function go(k,manual){i=(k+cards.length)%cards.length;paint();restart()}
+    function restart(){clearInterval(timer);if(RM)return;timer=setInterval(function(){if(!paused&&!document.hidden)go(i+1)},DUR)}
+    paint();restart();
+    show.addEventListener('mouseenter',function(){paused=true;show.classList.add('paused')});
+    show.addEventListener('mouseleave',function(){paused=false;show.classList.remove('paused');stage.style.setProperty('--rx','0deg');stage.style.setProperty('--ry','0deg')});
+    if(HOVER&&!RM){
+      show.addEventListener('mousemove',function(e){var r=stage.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;stage.style.setProperty('--ry',(x*10).toFixed(2)+'deg');stage.style.setProperty('--rx',(-y*8).toFixed(2)+'deg')});
+    }
+    // swipe on touch
+    var sx=null;stage.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+    stage.addEventListener('touchend',function(e){if(sx==null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?i+1:i-1);sx=null},{passive:true});
+    document.addEventListener('visibilitychange',function(){if(!document.hidden)restart()});
+  }
+
+  // ---- 3D tilt on plates
+  if(HOVER&&!RM){
+    document.querySelectorAll('.plate').forEach(function(el){
+      el.addEventListener('mousemove',function(e){var r=el.getBoundingClientRect();var x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;el.style.setProperty('--ry',((x-.5)*10).toFixed(2)+'deg');el.style.setProperty('--rx',((.5-y)*10).toFixed(2)+'deg');el.style.setProperty('--gx',(x*100).toFixed(1)+'%');el.style.setProperty('--gy',(y*100).toFixed(1)+'%')});
+      el.addEventListener('mouseleave',function(){el.style.setProperty('--ry','0deg');el.style.setProperty('--rx','0deg')});
+    });
+  }
+
+  // ---- count-up numbers
+  var counts=Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  function fmt(v,dec){return v.toLocaleString('en-MY',{minimumFractionDigits:dec,maximumFractionDigits:dec})}
+  function runCount(el){
+    var to=parseFloat(el.getAttribute('data-count')),dec=parseInt(el.getAttribute('data-dec')||'0',10),from=el.hasAttribute('data-from')?parseFloat(el.getAttribute('data-from')):0;
+    if(RM){el.textContent=fmt(to,dec);return}
+    var t0=null,D=1400;
+    function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/D);var e=1-Math.pow(1-p,3);el.textContent=fmt(from+(to-from)*e,dec);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(to,dec)}
+    requestAnimationFrame(step);
+  }
+  var pop=document.querySelector('[data-pop]');
+  if('IntersectionObserver' in window){
+    var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){runCount(e.target);co.unobserve(e.target)}})},{threshold:.5});
+    counts.forEach(function(el){co.observe(el)});
+    if(pop){var po=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){pop.classList.add('pop');po.disconnect()}})},{threshold:.4});po.observe(pop)}
+  }else{counts.forEach(runCount);if(pop)pop.classList.add('pop')}
+
+  // ---- parallax (light)
+  var px=Array.prototype.slice.call(document.querySelectorAll('[data-px]'));
+  if(px.length&&!RM){
+    var ticking=false;
+    function par(){ticking=false;var vh=innerHeight;px.forEach(function(el){var r=el.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var c=(r.top+r.height/2-vh/2)/vh;el.style.transform='translate3d(0,'+(c*parseFloat(el.getAttribute('data-px'))*100).toFixed(2)+'px,0)'})}
+    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(par)}},{passive:true});par();
   }
 })();
 </script>
