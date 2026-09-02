@@ -924,6 +924,84 @@
   </button>
 </div>
 
+<script>
+(function(){
+  // ---- Live open/closed status, Malaysia time. Both kedai: Wed–Mon from 11:30, closed Tuesday.
+  //      Gelang Patah closes 21:00, Larkin closes 22:00.
+  var BR={gp:{close:21*60,label:'9.00pm'},lk:{close:22*60,label:'10.00pm'}};
+  function myt(){
+    var parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kuala_Lumpur',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var o={};parts.forEach(function(p){o[p.type]=p.value});
+    return {wd:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday),mins:(parseInt(o.hour,10)%24)*60+parseInt(o.minute,10)};
+  }
+  function status(t,b){
+    var OPEN=11*60+30;
+    if(t.wd===2) return {open:false,text:'Closed today (Tuesday) · opens Wednesday 11.30am'};
+    if(t.mins<OPEN) return {open:false,text:'Opens today at 11.30am'};
+    if(t.mins<b.close){var left=b.close-t.mins;return {open:true,text:left<=60?'Open now · closing in '+left+' min':'Open now · until '+b.label}}
+    return {open:false,text:'Closed for the night · opens '+(t.wd===1?'Wednesday':'tomorrow')+' 11.30am'};
+  }
+  try{
+    var t=myt(),gp=status(t,BR.gp),lk=status(t,BR.lk);
+    document.querySelectorAll('[data-status-text="gp"]').forEach(function(el){el.textContent=gp.text});
+    document.querySelectorAll('[data-status-text="lk"]').forEach(function(el){el.textContent=lk.text});
+    document.querySelectorAll('[data-pill="gp"]').forEach(function(el){el.classList.toggle('off',!gp.open)});
+    document.querySelectorAll('[data-pill="lk"]').forEach(function(el){el.classList.toggle('off',!lk.open)});
+    var anyOpen=gp.open||lk.open, hero;
+    if(t.wd===2) hero='Closed today (Tuesday) · both kedai open Wednesday 11.30am';
+    else if(gp.open&&lk.open) hero='Open now · Gelang Patah till 9pm · Larkin till 10pm';
+    else if(lk.open) hero='Larkin open till 10pm · Gelang Patah closed for the night';
+    else hero=gp.text;
+    document.querySelectorAll('[data-status-text]:not([data-status-text="gp"]):not([data-status-text="lk"])').forEach(function(el){el.textContent=hero});
+    document.querySelectorAll('[data-status-dot]').forEach(function(el){el.classList.toggle('off',!anyOpen)});
+  }catch(e){}
 
+  // ---- Mobile nav
+  var nav=document.getElementById('nav'),burger=document.querySelector('[data-burger]'),mnav=document.getElementById('mnav');
+  function closeNav(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':''});
+  mnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav)});
+  window.addEventListener('resize',function(){if(window.innerWidth>1040)closeNav()});
+
+  // ---- WhatsApp chooser
+  var wa=document.querySelector('[data-wa]'),waBtn=document.querySelector('[data-wa-btn]');
+  waBtn.addEventListener('click',function(e){e.stopPropagation();var o=wa.classList.toggle('open');waBtn.setAttribute('aria-expanded',o?'true':'false')});
+  document.addEventListener('click',function(e){if(!wa.contains(e.target)){wa.classList.remove('open');waBtn.setAttribute('aria-expanded','false')}});
+
+  // ---- Nearest kedai: geolocate, pick the closer branch, open Waze. Falls back to the kedai section.
+  var KEDAI=[
+    {name:'Gelang Patah',lat:1.4585279,lng:103.5841039,waze:'https://waze.com/ul?ll=1.4585279,103.5841039&navigate=yes'},
+    {name:'Larkin',lat:1.4943258,lng:103.7413919,waze:'https://waze.com/ul?ll=1.4943258,103.7413919&navigate=yes'}
+  ];
+  function dist(a,b,c,d){var R=6371,x=(c-a)*Math.PI/180,y=(d-b)*Math.PI/180,h=Math.sin(x/2)*Math.sin(x/2)+Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(y/2)*Math.sin(y/2);return 2*R*Math.asin(Math.sqrt(h))}
+  document.querySelectorAll('[data-nearest]').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      if(!navigator.geolocation) return;
+      e.preventDefault();
+      var label=btn.innerHTML;btn.classList.add('busy');
+      var txt=btn.lastChild;if(txt&&txt.nodeType===3)txt.textContent='Locating…';
+      var done=false;
+      function fallback(){if(done)return;done=true;btn.innerHTML=label;btn.classList.remove('busy');closeNav();location.hash='#kedai'}
+      var timer=setTimeout(fallback,7000);
+      navigator.geolocation.getCurrentPosition(function(p){
+        if(done)return;done=true;clearTimeout(timer);
+        var k=KEDAI.slice().sort(function(a,b){return dist(p.coords.latitude,p.coords.longitude,a.lat,a.lng)-dist(p.coords.latitude,p.coords.longitude,b.lat,b.lng)})[0];
+        btn.innerHTML=label;btn.classList.remove('busy');
+        window.location.href=k.waze;
+      },function(){clearTimeout(timer);fallback()},{timeout:6000,maximumAge:300000});
+    });
+  });
+
+  // ---- Menu chips: highlight the category in view
+  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var cats=Array.prototype.slice.call(document.querySelectorAll('.cat'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){chips.forEach(function(c){c.classList.toggle('on',c.getAttribute('href')==='#'+e.target.id)})}});
+    },{rootMargin:'-40% 0px -50% 0px'});
+    cats.forEach(function(c){io.observe(c)});
+  }
+})();
+</script>
 </body>
 </html>
