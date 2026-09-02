@@ -8,11 +8,14 @@ Single-file static site. No build step, no framework.
 - `og.png` — social share image (WhatsApp / Facebook preview, 1200×630)
 - `photo-*.jpg`, `logo-*.png` — photos from the kedai's own menu shoot and Instagram
 - `CNAME` — custom domain for GitHub Pages (do not delete)
+- `sitemap.xml`, `robots.txt` — for Google Search Console
 
 ## Where things are
 
 - Domain: Cloudflare Registrar, account Afifakmal9301@gmail.com, auto-renew on. DNS: 4 × A records to GitHub Pages + CNAME `www` → `abangafifakmal.github.io`, all DNS-only (grey cloud). Keep them DNS-only or GitHub's HTTPS certificate breaks.
-- Email: Cloudflare Email Routing, `hello@thamadavillage.com` forwards to the owner's inbox.
+- Email: Cloudflare Email Routing, `hello@thamadavillage.com` forwards to afifakmal9301@gmail.com (change the destination in Cloudflare → Email → Email Routing).
+- Analytics: Google Analytics 4, property "thamadavillage.com", Measurement ID `G-T83KV31HD5` (account: Afifakmal9301@gmail.com). The tag is in `<head>`; custom click events (`whatsapp_click`, `call_click`, `waze_click`, `maps_click`, `delivery_click`, `social_click`, `menu_view`, `nearest_kedai_click`) are sent from the last `<script>` in `index.html`, with params `branch`, `place`, `purpose`, `platform`.
+- Search: Google Search Console, domain property `thamadavillage.com`, sitemap submitted.
 - Hosting: this repo, branch `main`, root. Settings → Pages → Enforce HTTPS is on.
 
 ## Editing
@@ -20,7 +23,8 @@ Single-file static site. No build step, no framework.
 - Prices / menu items: search for `<div class="item">` in `index.html`. One line per item: name, code, tags, price, optional description.
 - Hours: the branch cards (`#gelang-patah`, `#larkin`), the footer, the FAQ, and the JSON-LD block in `<head>`. The open/closed pill logic is in the `<script>` at the bottom (`BR` object: closing times; Tuesday closure).
 - Photos: replace the file with the same name, same square/4:3 crop, ≤ 1600px wide, JPEG quality ~85.
-- Phone numbers and links: search for the number; each appears in the branch card, footer, FAQ and WhatsApp chooser.
+- Phone numbers and links: search for the number; each appears in the branch card, footer, FAQ and WhatsApp chooser. Every WhatsApp link carries a prefilled `?text=` starting with "Hi, saya dari website thamadavillage.com" so the kedai knows the chat came from the website. Keep that when editing.
+- After a change to the menu or hours, bump `<lastmod>` in `sitemap.xml`.
 
 ## If the domain ever moves
 
