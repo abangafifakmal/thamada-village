@@ -1,28 +1,27 @@
 # Thamada Village × Teh O Ice 50¢ — website
 
-Single-file static site. No build step, no framework. Hosted on GitHub Pages.
+Live at **https://thamadavillage.com** (GitHub Pages, custom domain). The old URL https://abangafifakmal.github.io/thamada-village/ redirects there.
+
+Single-file static site. No build step, no framework.
 
 - `index.html` — the whole site (HTML + CSS + JS inline)
 - `og.png` — social share image (WhatsApp / Facebook preview, 1200×630)
+- `photo-*.jpg`, `logo-*.png` — photos from the kedai's own menu shoot and Instagram
+- `CNAME` — custom domain for GitHub Pages (do not delete)
 
-## Custom domain (when ready)
+## Where things are
 
-1. Add a file named `CNAME` to this repo containing just the domain, e.g. `thamadavillage.my`
-2. At the domain registrar, add DNS records:
-   - `A` records for the apex: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `CNAME` record for `www` → `abangafifakmal.github.io`
-3. Repo → Settings → Pages → Custom domain → enter the domain → tick "Enforce HTTPS" once the cert is issued.
-4. In `index.html`, search for `abangafifakmal.github.io/thamada-village` and replace with the new domain (canonical, `og:url`, `og:image`, JSON-LD `url` fields).
+- Domain: Cloudflare Registrar, account Afifakmal9301@gmail.com, auto-renew on. DNS: 4 × A records to GitHub Pages + CNAME `www` → `abangafifakmal.github.io`, all DNS-only (grey cloud). Keep them DNS-only or GitHub's HTTPS certificate breaks.
+- Email: Cloudflare Email Routing, `hello@thamadavillage.com` forwards to the owner's inbox.
+- Hosting: this repo, branch `main`, root. Settings → Pages → Enforce HTTPS is on.
 
-## Swapping in real photos
+## Editing
 
-In the "Signature plates" section, each card has an `<svg>` inside `<div class="art">`.
-Replace the `<svg>…</svg>` with `<img src="photos/nasi-kerabu.jpg" alt="Nasi Kerabu">` (square crop, ~800×800).
+- Prices / menu items: search for `<div class="item">` in `index.html`. One line per item: name, code, tags, price, optional description.
+- Hours: the branch cards (`#gelang-patah`, `#larkin`), the footer, the FAQ, and the JSON-LD block in `<head>`. The open/closed pill logic is in the `<script>` at the bottom (`BR` object: closing times; Tuesday closure).
+- Photos: replace the file with the same name, same square/4:3 crop, ≤ 1600px wide, JPEG quality ~85.
+- Phone numbers and links: search for the number; each appears in the branch card, footer, FAQ and WhatsApp chooser.
 
-## Editing prices or menu items
+## If the domain ever moves
 
-Search for `<div class="item">` in `index.html`. Each item is one line: name, optional tags, price, optional description.
-
-## Phone numbers, hours, addresses
-
-All in plain text near the top of each branch card (`#gelang-patah`, `#larkin`) and again in the footer and the JSON-LD block in `<head>`. Opening hours logic (open/closed pill) is in the `<script>` at the bottom: `OPEN`, `CLOSE`, and Tuesday closure.
+Search `index.html` for `thamadavillage.com` and replace (canonical, `og:url`, `og:image`, JSON-LD `url` fields), update `CNAME`, and point the new DNS at the same GitHub Pages IPs.
